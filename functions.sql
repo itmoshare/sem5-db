@@ -16,6 +16,8 @@ FROM (
 	
 );
 
+
+
 -- SELECT *
 -- FROM dbo.SaledCt() FOR Xml AUTO;
 
