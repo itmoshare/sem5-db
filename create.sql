@@ -1,0 +1,79 @@
+CREATE TABLE dbo.departments
+(
+	id INT NOT NULL PRIMARY KEY IDENTITY, 
+    name NCHAR(50) NULL, 
+    abbreviation NCHAR(10) NULL, 
+    [number] INT NOT NULL, 
+    characteristic NCHAR(100) NULL
+)
+
+CREATE TABLE dbo.people
+(
+	id INT NOT NULL PRIMARY KEY IDENTITY, 
+    lastname NCHAR(20) NULL,
+    firstname NCHAR(20) NULL, 
+    middlename NCHAR(20) NULL, 
+    birtdate DATE NULL, 
+    sex TINYINT NOT NULL,
+    birthplace NCHAR(50) NULL, 
+    [address] NCHAR(50) NULL, 
+    phone NCHAR(20) NULL
+)
+
+CREATE TABLE dbo.holidays
+(
+	id INT NOT NULL PRIMARY KEY IDENTITY,
+	person_id INT NOT NULL,
+	CONSTRAINT fk_people FOREIGN KEY (person_id) REFERENCES people(id),
+	department_id INT NOT NULL,
+	CONSTRAINT fk_department FOREIGN KEY (department_id) REFERENCES departments(id),
+	day_1 TINYINT NOT NULL,
+	day_2 TINYINT NOT NULL,
+	day_3 TINYINT NOT NULL,
+	day_4 TINYINT NOT NULL,
+	day_5 TINYINT NOT NULL,
+	day_6 TINYINT NOT NULL,
+	day_7 TINYINT NOT NULL,
+	day_8 TINYINT NOT NULL,
+	day_9 TINYINT NOT NULL,
+	day_10 TINYINT NOT NULL,
+	day_11 TINYINT NOT NULL,
+	day_12 TINYINT NOT NULL,
+	day_13 TINYINT NOT NULL,
+	day_14 TINYINT NOT NULL,
+	day_15 TINYINT NOT NULL,
+	day_16 TINYINT NOT NULL,
+	day_17 TINYINT NOT NULL,
+	day_18 TINYINT NOT NULL,
+	day_19 TINYINT NOT NULL,
+	day_20 TINYINT NOT NULL,
+	day_21 TINYINT NOT NULL,
+	day_22 TINYINT NOT NULL,
+	day_23 TINYINT NOT NULL,
+	day_24 TINYINT NOT NULL,
+	day_25 TINYINT NOT NULL,
+	day_26 TINYINT NOT NULL,
+	day_27 TINYINT NOT NULL,
+	day_28 TINYINT NOT NULL,
+	day_29 TINYINT NOT NULL,
+	day_30 TINYINT NOT NULL
+)
+
+CREATE TABLE dbo.products
+(
+	id INT NOT NULL PRIMARY KEY IDENTITY,
+	name NCHAR(50) NOT NULL,
+	[count] INT NOT NULL DEFAULT 0,
+	seller_id INT NOT NULL,
+	CONSTRAINT fk_seller FOREIGN KEY (seller_id) REFERENCES people(id),
+	[date] DATE NOT NULL,
+	price MONEY NOT NULL
+)
+
+CREATE TABLE dbo.salary
+(
+	id INT NOT NULL PRIMARY KEY IDENTITY,
+	person_id INT NOT NULL,
+	CONSTRAINT fk_person FOREIGN KEY (person_id) REFERENCES people(id),
+	salary_day MONEY NOT NULL
+)
